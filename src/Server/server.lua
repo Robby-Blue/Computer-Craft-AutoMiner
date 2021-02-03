@@ -3,7 +3,7 @@ local win = window.create(term.current(), 1, 1, term.getSize())
 local width, height = term.getSize()
 local screen = "start"
 
-local clients = {{,}}
+local clients = {}
 
 function drawScreen()
     win.setBackgroundColor(colors.blue)
