@@ -1,5 +1,4 @@
 local win = window.create(term.current(), 1, 1, term.getSize())
-local rednet = peripheral.wrap("left")
 
 local width, height = term.getSize()
 local screen = "start"
@@ -39,7 +38,8 @@ function mouseClick()
     end
 end
 
-function rednet()
+function getRednet()
+    rednet.open("Left")
     local id, msg = rednet.receive()
     if screen == "connect" then
         clients[table.getn(clients) + 1] = id
@@ -47,7 +47,7 @@ function rednet()
 end
 
 function listenEvents()
-    parallel.waitForAny(mouseClick, rednet)
+    parallel.waitForAny(mouseClick, getRednet)
 end
 
 parallel.waitForAny(startServer, listenEvents)
