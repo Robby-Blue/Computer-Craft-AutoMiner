@@ -1,5 +1,5 @@
 local win = window.create(term.current(), 1, 1, term.getSize())
-local modem = peripheral.wrap("left")
+local rednet = peripheral.wrap("left")
 
 local width, height = term.getSize()
 local screen = "start"
