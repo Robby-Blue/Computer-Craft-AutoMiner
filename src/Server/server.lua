@@ -13,7 +13,7 @@ function drawScreen()
         win.write("Click anywhere to start")
     end
     if screen == "connect" then
-        for local i = 1, table.getn(clients) do
+        for i = 1, table.getn(clients) do
             win.setCursorPos(2, i + 1)
             win.write(clients[i])
         end
