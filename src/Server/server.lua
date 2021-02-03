@@ -56,7 +56,8 @@ function getRednet()
     while true do
         local id, msg = rednet.receive()
         if screen == "connect" then
-            clients[table.getn(clients) + 1] = id
+            clients[table.getn(clients) + 1][1] = id
+            clients[table.getn(clients) + 1][2] = table.getn(clients) + 1
         end
     end
 end
