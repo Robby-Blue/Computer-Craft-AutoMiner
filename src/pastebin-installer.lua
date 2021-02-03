@@ -1,6 +1,6 @@
 -- code pasted on pastebin allowing for easy install
 
-local request = http.get("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/installer.lua")
+local request = http.get("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/universal-installer.lua")
 local code = request.readAll()
 request.close()
  
