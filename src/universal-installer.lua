@@ -23,11 +23,11 @@ win.write("Client")
 
 while not stop do
     local event, button, x, y = os.pullEvent("mouse_click")
-    if x > width / 2 - (string.len("Server") / 2) and x < width / 2 + (string.len("Server") / 2) and y == height / 2 then
+    if x > width / 2 - (string.len("Server") / 2) and x < width / 2 + (string.len("Server") / 2) and y == math.floor(height / 2) then
         stop = true
         type = "Server"
     end
-    if x > width / 2 - (string.len("Client") / 2) and x < width / 2 + (string.len("Client") / 2) and y == height / 2 + 1 then
+    if x > width / 2 - (string.len("Client") / 2) and x < width / 2 + (string.len("Client") / 2) and y == math.floor(height / 2 + 1) then
         stop = true
         type = "Client"
     end
