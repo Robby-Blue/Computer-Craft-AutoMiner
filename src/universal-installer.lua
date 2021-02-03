@@ -1,11 +1,11 @@
 function install(link, file)
     local request = http.get(link)
-    local startupcode = request.readAll()
+    local code = request.readAll()
     request.close()
 
-    local startupfile = fs.open(file,"w")
-    startupfile.write(code)
-    startupfile.close()
+    local file = fs.open(file,"w")
+    file.write(code)
+    file.close()
 end
 
 local win = window.create(term.current(), 1, 1, term.getSize())
