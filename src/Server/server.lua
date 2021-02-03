@@ -40,9 +40,11 @@ end
 
 function getRednet()
     rednet.open("Left")
-    local id, msg = rednet.receive()
-    if screen == "connect" then
-        clients[table.getn(clients) + 1] = id
+    while true do
+        local id, msg = rednet.receive()
+        if screen == "connect" then
+            clients[table.getn(clients) + 1] = id
+        end
     end
 end
 
