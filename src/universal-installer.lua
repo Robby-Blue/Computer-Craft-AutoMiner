@@ -38,11 +38,11 @@ win.setCursorPos(width / 2 - (string.len("Downloading files") / 2), height / 2 )
 win.write("Downloading files")
 
 if type == "Server" then
-    install("https://raw.githubusercontent.com/Robby-Blue/ComputerCraftStuff/main/Server/startup.lua", "startup.lua")
-    install("https://raw.githubusercontent.com/Robby-Blue/ComputerCraftStuff/main/Server/server.lua", "server.lua")
+    install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Server/startup.lua", "startup.lua")
+    install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Server/server.lua", "server.lua")
 end
 
 if type == "Client" then
-    install("https://raw.githubusercontent.com/Robby-Blue/ComputerCraftStuff/main/Client/startup.lua", "startup.lua")
-    install("https://raw.githubusercontent.com/Robby-Blue/ComputerCraftStuff/main/Client/client.lua", "client.lua")
+    install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Client/startup.lua", "startup.lua")
+    install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Client/client.lua", "client.lua")
 end
