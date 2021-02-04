@@ -12,7 +12,7 @@ function startClient()
     while true do
         if table.getn(queue) > 0 then
             handleRequest(queue[1][1], queue[1][2])
-            queue.remove(1)
+           table.remove(queue, 1)
         else
             sleep(1)
         end
@@ -55,16 +55,16 @@ function handleRequest(id, msg)
         end
 
         if expected == "coords.x" then
-            startx = msg
+            startx = tonumber(msg)
             expected = "coords.y"
         elseif expected == "coords.y" then
-            starty = msg
+            starty = tonumber(msg)
             expected = "coords.z"
         elseif expected == "coords.z" then
-            startz = msg
+            startz = tonumber(msg)
             expected = "coords.dir"
         elseif expected == "coords.dir" then
-            startdir = msg
+            startdir = tonumber(msg)
             expected = ""
         end
     end
