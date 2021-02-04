@@ -100,7 +100,7 @@ function getRednet()
     while true do
         local id, msg = rednet.receive()
         if screen == "connect" then
-            if msg = "autominer.connect" then
+            if msg == "autominer.connect" then
                 local newx = 0
                 local newy = 1
                 if table.getn(clients) > 0 then
