@@ -10,7 +10,7 @@ end
 
 print("Checking for new versions")
 
-local request = http.get(link)
+local request = http.get("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Server/version.txt")
 local onlineversion = request.readAll()
 request.close()
 
