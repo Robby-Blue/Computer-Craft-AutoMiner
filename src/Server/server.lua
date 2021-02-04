@@ -30,7 +30,7 @@ function drawScreen()
         local turtlecount = finished.."/"..table.getn(clients)
 
         win.setCursorPos(width / 2 - (string.len(turtlecount) / 2), height / 2 )
-        turtle.write(turtlecount)
+        win.write(turtlecount)
     end
 end
 
