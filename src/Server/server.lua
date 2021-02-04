@@ -17,7 +17,7 @@ function drawScreen()
         win.write("Connected clients")
         for i = 1, table.getn(clients) do
             win.setCursorPos(2, i + 2)
-            win.write("Computer ID: "..clients[i][1].." Personal ID: "..clients[i][2])
+            win.write("Computer ID: "..clients[i][1].." Internal ID: "..clients[i][2].." / x"..clients[i][3][1].." y"..clients[i][3][2])
         end
     end
 end
@@ -56,7 +56,18 @@ function getRednet()
     while true do
         local id, msg = rednet.receive()
         if screen == "connect" then
-            clients[table.getn(clients) + 1] = {id, table.getn(clients) + 1}
+            local newx = 0
+            local newy = 0
+
+            if table.getn(clients) > 0 then
+                newx = clients[table.getn(clients)][3][1] + 1
+                newy = clients[table.getn(clients)][3][2]
+                if newx > 16 then
+                    newy = newy + 1
+                end
+            end
+
+            clients[table.getn(clients) + 1] = {id, table.getn(clients) + 1, {newx, newy}}
         end
     end
 end
