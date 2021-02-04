@@ -18,9 +18,9 @@ local args = { ... }
 
 if table.getn(args) == 0 then
     runInstaller("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/universal-installer.lua")
-elseif table[1] == "client" or table[1] == "Client"
+elseif table[1] == "client" or table[1] == "Client" then
     runInstaller("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Client/client-installer.lua")
-elseif table[1] == "server" or table[1] == "Server"
+elseif table[1] == "server" or table[1] == "Server" then
     runInstaller("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Server/server-installer.lua")
 end
 
