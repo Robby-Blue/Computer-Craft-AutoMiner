@@ -14,7 +14,7 @@ function startClient()
             handleRequest(queue[1][1], queue[1][2])
            table.remove(queue, 1)
         else
-            sleep(1)
+            sleep(0)
         end
     end
 end
