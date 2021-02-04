@@ -1,11 +1,23 @@
-# Computer-Craft-AutoMiner
+# Computer Craft AutoMiner
 
-Simple program to use multiple turtles to mine entire chunks within seconds using the ComputerCraft mod
+## what
+i was bored and wanted to make a cool miner and was bored. may still be updated whenever im bored
 
-install by writing **pastebin run FX1XJWds** in the shell and selecting if the shell is a client (miner) or the server 
+## features
 
-a **advanced** turtle is required; a normal one doesnt work
+- automatic mining
+- server
+- automatic updating
+- gui (work in progess)
 
-a rednet modem is also required for communication between turtles and gps location
+# requirements
 
-this is pretty late game and required a lot of gold and stuff to run
+- gps
+- rednet
+- many turtles (advanced for now)
+
+# installation
+
+run `pastebin run FX1XJWds` to start the installer
+
+simply choose if the turtle is the server or a client
