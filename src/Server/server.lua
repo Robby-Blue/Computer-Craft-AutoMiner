@@ -78,6 +78,7 @@ function mouseClick()
         local event, button, x, y = os.pullEvent("mouse_click")
 
         if screen == "start" then
+            rednet.broadcast("autominer.start")
             screen = "connect"
             sleep(5)
             screen = "move"
@@ -90,8 +91,6 @@ function mouseClick()
                 rednet.send(clients[i][1], ymove.."")
                 rednet.send(clients[i][1], zmove.."")
             end
-
-            rednet.broadcast("autominer.dig")
         end
     end
 end
