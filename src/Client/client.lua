@@ -54,16 +54,16 @@ function handleRequest(id, msg)
             goto(startx, starty, startz, startdir)
         end
 
-        if expected = "coords.x" then
+        if expected == "coords.x" then
             startx = msg
             expected = "coords.y"
-        elseif expected = "coords.y" then
+        elseif expected == "coords.y" then
             starty = msg
             expected = "coords.z"
-        elseif expected = "coords.z" then
+        elseif expected == "coords.z" then
             startz = msg
             expected = "coords.dir"
-        elseif expected = "coords.dir" then
+        elseif expected == "coords.dir" then
             startdir = msg
             expected = ""
         end
