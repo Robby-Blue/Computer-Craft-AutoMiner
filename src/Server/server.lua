@@ -113,9 +113,9 @@ function getRednet()
                 clients[table.getn(clients) + 1] = {id, table.getn(clients) + 1, {newx, newy}}
             end
         end
-        if msg = "autominer.finished" then
+        if msg == "autominer.finished" then
             finished = finished + 1
-            if finished = table.getn(clients) then
+            if finished == table.getn(clients) then
                 for i = 1, table.getn(clients) do
                     rednet.send(clients[i][1], "autominer.continue")
                 end
