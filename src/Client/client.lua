@@ -52,7 +52,7 @@ function handleRequest(id, msg)
             expected = "coords.x"
         elseif msg == "autominer.startmove" then
             gotoCoords(startx, starty, startz, startdir)
-        else then
+        else
             if expected == "coords.x" then
                 startx = tonumber(msg)
                 expected = "coords.y"
