@@ -42,7 +42,7 @@ end
 
 function handleRequest(id, msg)
     print(id.." sent "..msg)
-    if id == nil then
+    if server == nil then
         if msg == "autominer.start" then
             rednet.send(id, "autominer.connect")
             server = id
