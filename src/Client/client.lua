@@ -10,9 +10,9 @@ function startClient()
     direction = getFacingDirection()
     coordx, coordy, coordz = gps.locate()
     while true do
-        if table.getn(clients) > 0 then
-            handleRequest(clients[1][1], clients[1][2])
-            clients.remove(1)
+        if table.getn(queue) > 0 then
+            handleRequest(queue[1][1], queue[1][2])
+            queue.remove(1)
         else
             sleep(1)
         end
