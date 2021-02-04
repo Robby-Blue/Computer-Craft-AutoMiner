@@ -26,6 +26,7 @@ function drawScreen()
 end
 
 function startServer()
+    finished = 0
     direction = getFacingDirection()
     while true do
         drawScreen()
@@ -118,10 +119,11 @@ function getRednet()
         if msg == "autominer.finished" then
             finished = finished + 1
             if finished == table.getn(clients) then
-                if screen = "move" then
+                finished = 0
+                if screen == "move" then
                     screen = "dig"
                 end
-                if screen = "dig" then
+                if screen == "dig" then
                     for i = 1, table.getn(clients) do
                         rednet.send(clients[i][1], "autominer.dig")
                     end
