@@ -119,26 +119,32 @@ function gotoAxis(axis, coords)
 end
 
 function moveForward()
-    turtle.forward()
-    if direction == 1 then
-        coordx = coordx + 1
-    elseif direction == 2 then
-        coordz = coordz + 1
-    elseif direction == 3 then
-        coordx = coordx - 1
-    elseif direction == 4 then
-        coordz = coordz - 1
+    local succes = turtle.forward()
+    if succes then
+        if direction == 1 then
+            coordx = coordx + 1
+        elseif direction == 2 then
+            coordz = coordz + 1
+        elseif direction == 3 then
+            coordx = coordx - 1
+        elseif direction == 4 then
+            coordz = coordz - 1
+        end
     end
 end
 
 function moveUp()
-    turtle.up()
-    coordy = coordy + 1
+    local succes = turtle.up()
+    if succes then
+        coordy = coordy + 1
+    end
 end
 
 function moveDown()
-    turtle.down()
-    coordy = coordy - 1
+    local succes = turtle.down()
+    if succes then
+        coordy = coordy - 1
+    end
 end
 
 function turn(dir)
