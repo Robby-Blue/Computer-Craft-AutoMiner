@@ -7,3 +7,5 @@ install by writing **pastebin run FX1XJWds** in the shell and selecting if the s
 a **advanced** turtle is required; a normal one doesnt work
 
 a rednet modem is also required for communication between turtles and gps location
+
+this is pretty late game and required a lot of gold and stuff to run
