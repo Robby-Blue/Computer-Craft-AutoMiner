@@ -86,6 +86,7 @@ function mouseClick()
             for i = 1, table.getn(clients) do
                 local xmove, ymove, zmove = getCoordsForOffset(direction, clients[i][3][1], clients[i][3][2])
 
+                rednet.send(clients[i][1], "autominer.move")
                 rednet.send(clients[i][1], xmove.."")
                 rednet.send(clients[i][1], ymove.."")
                 rednet.send(clients[i][1], zmove.."")
