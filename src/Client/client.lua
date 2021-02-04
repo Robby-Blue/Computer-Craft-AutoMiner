@@ -57,15 +57,19 @@ function handleRequest(id, msg)
         if expected == "coords.x" then
             startx = tonumber(msg)
             expected = "coords.y"
+            print(msg.." / "tonumber(msg))
         elseif expected == "coords.y" then
             starty = tonumber(msg)
             expected = "coords.z"
+            print(msg.." / "tonumber(msg))
         elseif expected == "coords.z" then
             startz = tonumber(msg)
             expected = "coords.dir"
+            print(msg.." / "tonumber(msg))
         elseif expected == "coords.dir" then
             startdir = tonumber(msg)
             expected = ""
+            print(msg.." / "tonumber(msg))
         end
     end
 end
