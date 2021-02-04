@@ -52,24 +52,20 @@ function handleRequest(id, msg)
             expected = "coords.x"
         elseif msg == "autominer.startmove" then
             gotoCoords(startx, starty, startz, startdir)
-        end
-
-        if expected == "coords.x" then
-            startx = tonumber(msg)
-            expected = "coords.y"
-            print(msg.." / "tonumber(msg))
-        elseif expected == "coords.y" then
-            starty = tonumber(msg)
-            expected = "coords.z"
-            print(msg.." / "tonumber(msg))
-        elseif expected == "coords.z" then
-            startz = tonumber(msg)
-            expected = "coords.dir"
-            print(msg.." / "tonumber(msg))
-        elseif expected == "coords.dir" then
-            startdir = tonumber(msg)
-            expected = ""
-            print(msg.." / "tonumber(msg))
+        else then
+            if expected == "coords.x" then
+                startx = tonumber(msg)
+                expected = "coords.y"
+            elseif expected == "coords.y" then
+                starty = tonumber(msg)
+                expected = "coords.z"
+            elseif expected == "coords.z" then
+                startz = tonumber(msg)
+                expected = "coords.dir"
+            elseif expected == "coords.dir" then
+                startdir = tonumber(msg)
+                expected = ""
+            end
         end
     end
 end
