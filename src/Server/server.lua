@@ -23,6 +23,15 @@ function drawScreen()
             win.write("Computer ID: "..clients[i][1].." Internal ID: "..clients[i][2])
         end
     end
+    if screen == "move" then
+        win.setCursorPos(width / 2 - (string.len("Moving towards mine") / 2), height / 2 )
+        win.write("Moving towards mine")
+
+        local turtlecount = finished.."/"..table.getn(clients)
+
+        win.setCursorPos(width / 2 - (string.len(turtlecount) / 2), height / 2 )
+        turtle.write(turtlecount)
+    end
 end
 
 function startServer()
@@ -118,7 +127,6 @@ function getRednet()
         end
         if msg == "autominer.finished" then
             finished = finished + 1
-            print(finished)
             if finished == table.getn(clients) then
                 finished = 0
                 if screen == "move" then
