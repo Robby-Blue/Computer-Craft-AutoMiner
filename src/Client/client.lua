@@ -159,7 +159,6 @@ function getRednet()
     rednet.open("Left")
     while true do
         id, msg = rednet.receive()
-        parallel.waitForAny(getRednet, handleRednet)
         queue[table.getn(queue) + 1] = {id, msg} 
     end
 end
