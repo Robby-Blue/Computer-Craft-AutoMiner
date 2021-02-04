@@ -19,7 +19,8 @@ local version = file.readAll()
 file.close()
 
 if request ~= onlineversion then
-    print("New version found ("..onlineversion..")")
+    print("New version found ("..onlineversion..", currently using "..version..")")
+    sleep(1)
     install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Server/startup.lua", "startup.lua")
     install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Server/server.lua", "server.lua")
     install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Server/version.txt", "version.txt")
