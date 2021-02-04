@@ -4,6 +4,7 @@ local width, height = term.getSize()
 local screen = "start"
 
 local direction
+local finished
 
 local clients = {}
 
@@ -78,7 +79,6 @@ function mouseClick()
 
         if screen == "start" then
             screen = "connect"
-            rednet.broadcast("autominer.start")
             sleep(5)
             screen = "move"
 
@@ -86,10 +86,12 @@ function mouseClick()
                 local xmove, ymove, zmove = getCoordsForOffset(direction, clients[i][3][1], clients[i][3][2])
 
                 rednet.send(clients[i][1], "autominer.move")
-                rednet.send(xmove)
-                rednet.send(ymove)
-                rednet.send(zmove)
+                rednet.send(clients[i][1], xmove.."")
+                rednet.send(clients[i][1], ymove.."")
+                rednet.send(clients[i][1], zmove.."")
             end
+
+            rednet.broadcast("autominer.dig")
         end
     end
 end
@@ -101,15 +103,23 @@ function getRednet()
         if screen == "connect" then
             if msg = "autominer.connect" then
                 local newx = 0
-                local newy = 0
+                local newy = 1
                 if table.getn(clients) > 0 then
                     newx = clients[table.getn(clients)][3][1] + 1
                     newy = clients[table.getn(clients)][3][2]
                     if newx > 16 then
-                    newy = newy + 1
+                        newy = newy + 3
                     end
                 end
                 clients[table.getn(clients) + 1] = {id, table.getn(clients) + 1, {newx, newy}}
+            end
+        end
+        if msg = "autominer.finished" then
+            finished = finished + 1
+            if finished = table.getn(clients) then
+                for i = 1, table.getn(clients) do
+                    rednet.send(clients[i][1], "autominer.continue")
+                end
             end
         end
     end
