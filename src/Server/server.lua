@@ -3,6 +3,8 @@ local win = window.create(term.current(), 1, 1, term.getSize())
 local width, height = term.getSize()
 local screen = "start"
 
+local direction
+
 local clients = {}
 
 function drawScreen()
@@ -17,12 +19,13 @@ function drawScreen()
         win.write("Connected clients")
         for i = 1, table.getn(clients) do
             win.setCursorPos(2, i + 2)
-            win.write("Computer ID: "..clients[i][1].." Internal ID: "..clients[i][2].." / x"..clients[i][3][1].." y"..clients[i][3][2])
+            win.write("Computer ID: "..clients[i][1].." Internal ID: "..clients[i][2])
         end
     end
 end
 
 function startServer()
+    direction = getFacingDirection()
     while true do
         drawScreen()
         sleep(0)
@@ -35,7 +38,38 @@ function getFacingDirection()
         turtle.forward()
         local x2, y2, z2 = gps.locate()
         turtle.back()
+
+        if x2 > x1 then
+            return 1
+        elseif z2 > z1 then
+            return 2
+        elseif x2 < x1 then
+            return 3
+        elseif z2 < z1 then
+            return 4
+        end
     end
+
+    return nil
+end
+
+function getCoordsForOffset(dir, xoffset, yoffset)
+    local x, y, z = gps.locate()
+    y = y + yoffset
+    if dir == 1 then
+        x = x + 2
+        z = z + xoffset
+    elseif dir == 2 then
+        z = z + 2
+        x = x - xoffset
+    elseif dir == 3 then
+        x = x - 2
+        z = z - xoffset
+    elseif dir == 4 then
+        z = z - 2
+        x = x + xoffset
+    end
+    return x, y, z
 end
 
 function mouseClick()
@@ -45,8 +79,17 @@ function mouseClick()
         if screen == "start" then
             screen = "connect"
             rednet.broadcast("autominer.start")
-            sleep(1)
+            sleep(5)
             screen = "move"
+
+            for i = 1, table.getn(clients) do
+                local xmove, ymove, zmove = getCoordsForOffset(direction, clients[i][3][1], clients[i][3][2])
+
+                rednet.send(clients[i][1], "autominer.move")
+                rednet.send(xmove)
+                rednet.send(ymove)
+                rednet.send(zmove)
+            end
         end
     end
 end
@@ -56,18 +99,18 @@ function getRednet()
     while true do
         local id, msg = rednet.receive()
         if screen == "connect" then
-            local newx = 0
-            local newy = 0
-
-            if table.getn(clients) > 0 then
-                newx = clients[table.getn(clients)][3][1] + 1
-                newy = clients[table.getn(clients)][3][2]
-                if newx > 16 then
+            if msg = "autominer.connect" then
+                local newx = 0
+                local newy = 0
+                if table.getn(clients) > 0 then
+                    newx = clients[table.getn(clients)][3][1] + 1
+                    newy = clients[table.getn(clients)][3][2]
+                    if newx > 16 then
                     newy = newy + 1
+                    end
                 end
+                clients[table.getn(clients) + 1] = {id, table.getn(clients) + 1, {newx, newy}}
             end
-
-            clients[table.getn(clients) + 1] = {id, table.getn(clients) + 1, {newx, newy}}
         end
     end
 end
