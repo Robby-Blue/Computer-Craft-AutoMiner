@@ -119,7 +119,7 @@ function gotoAxis(axis, coords)
         elseif coordx < coords then
             turn(1)
         end
-        while coordxy ~= coords do
+        while coordx ~= coords do
             moveForward()
         end
     end
