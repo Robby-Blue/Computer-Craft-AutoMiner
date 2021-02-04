@@ -29,8 +29,12 @@ function drawScreen()
 
         local turtlecount = finished.."/"..table.getn(clients)
 
-        win.setCursorPos(width / 2 - (string.len(turtlecount) / 2), height / 2 )
+        win.setCursorPos(width / 2 - (string.len(turtlecount) / 2), height / 2 + 1)
         win.write(turtlecount)
+    end
+    if screen == "dig" then
+        win.setCursorPos(width / 2 - (string.len("Mining") / 2), height / 2 )
+        win.write("Mining")
     end
 end
 

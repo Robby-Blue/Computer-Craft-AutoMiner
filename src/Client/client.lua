@@ -13,7 +13,7 @@ function startClient()
     while true do
         if table.getn(queue) > 0 then
             handleRequest(queue[1][1], queue[1][2])
-           table.remove(queue, 1)
+            table.remove(queue, 1)
         else
             sleep(0)
         end
