@@ -90,6 +90,8 @@ function mouseClick()
                 rednet.send(clients[i][1], xmove.."")
                 rednet.send(clients[i][1], ymove.."")
                 rednet.send(clients[i][1], zmove.."")
+                rednet.send(clients[i][1], direction.."")
+                rednet.send(clients[i][1], "autominer.startmove")
             end
         end
     end
