@@ -6,7 +6,7 @@ local startx, starty, startz, startdir
 local coordx, coordy, coordz, direction
 
 function startClient()
-    turt.refuel()
+    turtle.refuel()
     rednet.open("Left")
     direction = getFacingDirection()
     coordx, coordy, coordz = gps.locate()
