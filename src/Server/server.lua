@@ -128,6 +128,7 @@ function getRednet()
                     for i = 1, table.getn(clients) do
                         rednet.send(clients[i][1], "autominer.dig")
                     end
+                    turtle.forward()
                 end
             end
         end
