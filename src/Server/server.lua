@@ -118,8 +118,13 @@ function getRednet()
         if msg == "autominer.finished" then
             finished = finished + 1
             if finished == table.getn(clients) then
-                for i = 1, table.getn(clients) do
-                    rednet.send(clients[i][1], "autominer.continue")
+                if screen = "move" then
+                    screen = "dig"
+                end
+                if screen = "dig" then
+                    for i = 1, table.getn(clients) do
+                        rednet.send(clients[i][1], "autominer.dig")
+                    end
                 end
             end
         end

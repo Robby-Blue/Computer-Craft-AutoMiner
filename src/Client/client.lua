@@ -52,6 +52,11 @@ function handleRequest(id, msg)
             expected = "coords.x"
         elseif msg == "autominer.startmove" then
             gotoCoords(startx, starty, startz, startdir)
+            rednet.send(server, "autominer.finished")
+        elseif msg == "autominer.dig" then
+            dig()
+            moveForward()
+            rednet.send(server, "autominer.finished")
         else
             if expected == "coords.x" then
                 startx = tonumber(msg)
@@ -67,6 +72,19 @@ function handleRequest(id, msg)
                 expected = ""
             end
         end
+    end
+end
+
+function dig()
+    turtle.digUp()
+    turtle.dig()
+    turtle.digDown()
+    sleep(0.5)
+    while turtle.detectUp() do
+        turtle.digUp()
+    end
+    while turtle.detect() do
+        turtle.dig()
     end
 end
 
