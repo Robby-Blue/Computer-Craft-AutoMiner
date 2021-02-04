@@ -40,9 +40,11 @@ win.write("Downloading files")
 if type == "Server" then
     install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Server/startup.lua", "startup.lua")
     install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Server/server.lua", "server.lua")
+    install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Server/version.txt", "version.txt")
 end
 
 if type == "Client" then
     install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Client/startup.lua", "startup.lua")
     install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Client/client.lua", "client.lua")
+    install("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Client/version.txt", "version.txt")
 end
