@@ -72,13 +72,13 @@ end
 
 function gotoCoords(gotox, gotoy, gotoz, dir)
     if dir == 1 or dir == 3 then
-        gotoAxis("y", gotox)
-        gotoAxis("z", gotox)
+        gotoAxis("y", gotoy)
+        gotoAxis("z", gotoz)
         gotoAxis("x", gotox)
     else
-        gotoAxis("y", gotox)
+        gotoAxis("y", gotoy)
         gotoAxis("x", gotox)
-        gotoAxis("z", gotox)
+        gotoAxis("z", gotoz)
     end
     turn(dir)
 end
