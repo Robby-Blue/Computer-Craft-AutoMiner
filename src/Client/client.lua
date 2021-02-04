@@ -50,8 +50,8 @@ function handleRequest(id, msg)
     elseif id == server then
         if msg == "autominer.move" then
             expected = "coords.x"
-        else if msg == "autominer.startmove" then
-            goto(startx, starty, startz, startdir)
+        elseif msg == "autominer.startmove" then
+            gotoCoords(startx, starty, startz, startdir)
         end
 
         if expected == "coords.x" then
@@ -70,7 +70,7 @@ function handleRequest(id, msg)
     end
 end
 
-function goto(gotox, gotoy, gotoz, dir)
+function gotoCoords(gotox, gotoy, gotoz, dir)
     if dir == 1 or dir == 3 then
         gotoAxis("y", gotox)
         gotoAxis("z", gotox)
@@ -85,23 +85,23 @@ end
 
 function gotoAxis(axis, coords)
     if axis == "y" then
-        while coordy ~= coords then
-            if(coordy < coords)
+        while coordy ~= coords do
+            if coordy < coords  then
                 moveUp()
             end
-            if(coordy > coords)
+            if coordy > coords  then
                 moveDown()
             end
         end
     end
 
     if axis == "x" then
-        if(coordx > coords) then
+        if coordx > coords then
             turn(3)
-        else if(coordx < coords) then
+        elseif coordx < coords then
             turn(1)
         end
-        while coordxy ~= coords then
+        while coordxy ~= coords do
             moveForward()
         end
     end
@@ -109,10 +109,10 @@ function gotoAxis(axis, coords)
     if axis == "z" then
         if(coordz > coords) then
             turn(4)
-        else if(coordz < coords) then
+        elseif(coordz < coords) then
             turn(2)
         end
-        while coordz ~= coords then
+        while coordz ~= coords do
             moveForward()
         end
     end
@@ -128,7 +128,7 @@ function moveForward()
         coordx = coordx - 1
     elseif direction == 4 then
         coordz = coordz - 1
-    else
+    end
 end
 
 function moveUp()
