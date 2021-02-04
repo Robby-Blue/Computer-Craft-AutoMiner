@@ -118,6 +118,7 @@ function getRednet()
         end
         if msg == "autominer.finished" then
             finished = finished + 1
+            print(finished)
             if finished == table.getn(clients) then
                 finished = 0
                 if screen == "move" then

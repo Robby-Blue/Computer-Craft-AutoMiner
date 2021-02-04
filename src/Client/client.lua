@@ -76,15 +76,19 @@ function handleRequest(id, msg)
 end
 
 function dig()
-    turtle.digUp()
-    turtle.dig()
-    turtle.digDown()
-    sleep(0.5)
-    while turtle.detectUp() do
+    if turtle.detectUp() then
         turtle.digUp()
     end
+    if turtle.detect() then
+        turtle.dig()
+    end
+    if turtle.detectDown() then
+        turtle.digDown()
+    end
+    sleep(0.5)
     while turtle.detect() do
         turtle.dig()
+        sleep(0.5)
     end
 end
 
