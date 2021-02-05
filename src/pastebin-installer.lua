@@ -10,7 +10,7 @@ function runInstaller(link)
     file.close()
 
     shell.run("installing.lua")
-    sleep(1)
+    sleep(5)
     fs.delete("installing.lua")
     os.reboot()
 end

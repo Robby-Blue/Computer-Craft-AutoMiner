@@ -6,6 +6,21 @@ local startx, starty, startz, startdir
 local coordx, coordy, coordz, direction
 
 function startClient()
+
+    for i = 1, 16 do
+        local item = turtle.getItemDetail(i)
+        if item then
+            if item.name == "minecraft:diamond_pickaxe" then
+                turtle.select(i)
+                turtle.equipRight()
+            end
+            if item.name == "computercraft:peripheral" then
+                turtle.select(i)
+                turtle.equipLeft()
+            end
+        end
+    end
+
     turtle.refuel()
     rednet.open("Left")
     direction = getFacingDirection()
