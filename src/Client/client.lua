@@ -5,8 +5,7 @@ local expected
 local startx, starty, startz, startdir
 local coordx, coordy, coordz, direction
 
-function startClient()
-
+function initClient()
     for i = 1, 16 do
         local item = turtle.getItemDetail(i)
         if item then
@@ -27,6 +26,9 @@ function startClient()
     rednet.open("Left")
     direction = getFacingDirection()
     coordx, coordy, coordz = gps.locate()
+end
+
+function startClient()
     while true do
         if table.getn(queue) > 0 then
             handleRequest(queue[1][1], queue[1][2])
@@ -210,4 +212,5 @@ function getRednet()
     end
 end
 
+initClient()
 parallel.waitForAny(startClient, getRednet)
