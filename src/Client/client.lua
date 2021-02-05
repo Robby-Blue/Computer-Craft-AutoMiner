@@ -173,6 +173,8 @@ function moveForward()
         elseif direction == 4 then
             coordz = coordz - 1
         end
+    else
+        sleep(0)
     end
 end
 
@@ -180,6 +182,8 @@ function moveUp()
     local succes = turtle.up()
     if succes then
         coordy = coordy + 1
+    else
+        sleep(0)
     end
 end
 
@@ -187,6 +191,8 @@ function moveDown()
     local succes = turtle.down()
     if succes then
         coordy = coordy - 1
+    else
+        sleep(0)
     end
 end
 
