@@ -123,6 +123,7 @@ function getRednet()
                     newx = clients[table.getn(clients)][3][1] + 1
                     newy = clients[table.getn(clients)][3][2]
                     if newx > 16 then
+                        newx = 0
                         newy = newy + 2
                     end
                 end
