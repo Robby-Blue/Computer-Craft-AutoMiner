@@ -21,6 +21,8 @@ function startClient()
         end
     end
 
+    turtle.select(1)
+
     turtle.refuel()
     rednet.open("Left")
     direction = getFacingDirection()

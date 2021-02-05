@@ -8,7 +8,8 @@ function install(link, file)
     file.close()
 end
 
-print("Checking for new versions")
+term.clear()
+term.setCursorPos(1, 1)
 
 local request = http.get("https://raw.githubusercontent.com/Robby-Blue/Computer-Craft-AutoMiner/main/src/Client/version.txt")
 local onlineversion = request.readAll()
