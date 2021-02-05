@@ -119,6 +119,7 @@ function gotoCoords(gotox, gotoy, gotoz, dir)
         gotoAxis("z", gotoz)
     end
     turn(dir)
+    sleep(0.5)
 end
 
 function gotoAxis(axis, coords)
