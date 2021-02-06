@@ -165,7 +165,7 @@ function moveForward()
             coordz = coordz - 1
         end
     else
-        sleep(0)
+        sleep(0.1)
     end
 end
 
@@ -174,7 +174,7 @@ function moveUp()
     if succes then
         coordy = coordy + 1
     else
-        sleep(0)
+        sleep(0.1)
     end
 end
 
@@ -183,7 +183,7 @@ function moveDown()
     if succes then
         coordy = coordy - 1
     else
-        sleep(0)
+        sleep(0.1)
     end
 end
 
