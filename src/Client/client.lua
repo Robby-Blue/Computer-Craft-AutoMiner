@@ -64,7 +64,7 @@ function handleRequest(id, msg)
     print(id.." sent "..msg)
 
     local requestargs={}
-    for str in string.gmatch(inputstr, "([^ ]+)") do
+    for str in string.gmatch(msg, "([^ ]+)") do
         table.insert(requestargs, str)
     end
 
