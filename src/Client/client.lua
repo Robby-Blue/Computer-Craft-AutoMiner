@@ -62,35 +62,26 @@ end
 
 function handleRequest(id, msg)
     print(id.." sent "..msg)
+
+    local requestargs={}
+    for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+        table.insert(requestargs, str)
+    end
+
     if server == nil then
-        if msg == "autominer.start" then
+        if requestargs[1] == "autominer.start" then
             rednet.send(id, "autominer.connect")
             server = id
         end
     elseif id == server then
-        if msg == "autominer.move" then
-            expected = "coords.x"
-        elseif msg == "autominer.startmove" then
+        if requestargs[1] == "autominer.move" then
             gotoCoords(startx, starty, startz, startdir)
             rednet.send(server, "autominer.finished")
-        elseif msg == "autominer.dig" then
+        end
+        if requestargs[1] == "autominer.dig" then
             dig()
             moveForward()
             rednet.send(server, "autominer.finished")
-        else
-            if expected == "coords.x" then
-                startx = tonumber(msg)
-                expected = "coords.y"
-            elseif expected == "coords.y" then
-                starty = tonumber(msg)
-                expected = "coords.z"
-            elseif expected == "coords.z" then
-                startz = tonumber(msg)
-                expected = "coords.dir"
-            elseif expected == "coords.dir" then
-                startdir = tonumber(msg)
-                expected = ""
-            end
         end
     end
 end
