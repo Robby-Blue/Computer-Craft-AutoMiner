@@ -80,7 +80,9 @@ function handleRequest(id, msg)
         end
         if requestargs[1] == "autominer.dig" then
             dig()
-            moveForward()
+            if turtle.getItemCount(16) ~= 0 then
+                cleanInventory()
+            end
             rednet.send(server, "autominer.finished")
         end
     end
@@ -101,6 +103,23 @@ function dig()
         turtle.dig()
         sleep(0.5)
     end
+end
+
+function cleanInventory()
+    turtle.turnRight()
+    turtle.turnRight()
+    for i = 1, 16 do
+        local item = turtle.getItemDetail(i)
+        if item then
+            if item.name == "minecraft:cobblestone" or item.name == "minecraft:dirt" or item.name == "minecraft:clay_ball" then
+                turtle.select(i)
+                turtle.drop()
+            end
+        end
+    end
+    turtle.select(1)
+    turtle.turnRight()
+    turtle.turnRight()
 end
 
 function gotoCoords(gotox, gotoy, gotoz, dir)
