@@ -75,7 +75,7 @@ function handleRequest(id, msg)
         end
     elseif id == server then
         if requestargs[1] == "autominer.move" then
-            gotoCoords(requestargs[2], requestargs[3], requestargs[4], requestargs[5])
+            gotoCoords(tonumber(requestargs[2]), tonumber(requestargs[3]), tonumber(requestargs[4]), tonumber(requestargs[5]))
             rednet.send(server, "autominer.finished")
         end
         if requestargs[1] == "autominer.dig" then
