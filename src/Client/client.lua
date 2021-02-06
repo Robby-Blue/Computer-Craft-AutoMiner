@@ -83,6 +83,9 @@ function handleRequest(id, msg)
             if turtle.getItemCount(16) ~= 0 then
                 cleanInventory()
             end
+            if turtle.getFuelLevel() < 100 then
+                refuel()
+            end
             rednet.send(server, "autominer.finished")
         end
     end
@@ -120,6 +123,16 @@ function cleanInventory()
     turtle.select(1)
     turtle.turnRight()
     turtle.turnRight()
+end
+
+function refuel()
+    for i = 1, 16 do
+        if item then
+            if item.name == "minecraft:coal" then
+                turtle.refuel()
+            end
+        end
+    end
 end
 
 function gotoCoords(gotox, gotoy, gotoz, dir)
